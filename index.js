@@ -61,7 +61,7 @@ async function atualizarStatus() {
                 new ButtonBuilder()
                     .setLabel('💜 Discord Fluxo')
                     .setStyle(ButtonStyle.Link)
-                    .setURL('https://discord.gg/fluxo')
+                    .setURL('https://discord.gg/fluxorp')
             );
 
         await statusMessage.edit({
