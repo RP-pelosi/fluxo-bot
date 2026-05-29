@@ -20,6 +20,8 @@ let statusMessage;
 
 async function atualizarStatus() {
     try {
+
+        // TROQUE PELO NOVO CÓDIGO DO SERVIDOR
         const response = await axios.get(
             'https://servers-frontend.fivem.net/api/servers/single/djoq65'
         );
@@ -64,18 +66,22 @@ async function atualizarStatus() {
                     .setURL('https://discord.gg/fluxorp')
             );
 
-        await statusMessage.edit({
-            embeds: [embed],
-            components: [row]
-        });
+        if (statusMessage) {
+            await statusMessage.edit({
+                embeds: [embed],
+                components: [row]
+            });
+        }
 
         console.log('Atualizado!');
+
     } catch (error) {
         console.log('Erro:', error.message);
     }
 }
 
-client.once('ready', async () => {
+client.once('clientReady', async () => {
+
     console.log('Bot online!');
 
     const channel = await client.channels.fetch(CHANNEL_ID);
@@ -87,6 +93,7 @@ client.once('ready', async () => {
     atualizarStatus();
 
     setInterval(atualizarStatus, 60000);
+
 });
 
 client.login(TOKEN);
